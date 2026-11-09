@@ -1,0 +1,14 @@
+{
+  "description": "The incident's shape: the firewall lets agents reach only the package store, but the store's remote repositories fetch from the internet for any caller.",
+  "nodes": {
+    "agent-a": {"type": "agent"},
+    "agent-b": {"type": "agent"},
+    "artifactory": {"type": "service", "stateful": true, "relay": true},
+    "internet": {"type": "external"}
+  },
+  "network": [
+    ["agent-a", "artifactory"],
+    ["agent-b", "artifactory"],
+    ["artifactory", "internet"]
+  ]
+}

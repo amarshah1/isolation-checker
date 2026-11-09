@@ -1,0 +1,12 @@
+# Local WebDAV server for replaying leaks. Anonymous, localhost only.
+host: 127.0.0.1
+port: 8080
+simple_dc:
+  user_mapping:
+    "*": true
+# Keep WebDAV "dead" properties (PROPPATCH) in memory, like Artifactory properties.
+property_manager: true
+lock_storage: true
+dir_browser:
+  enable: false
+verbose: 1

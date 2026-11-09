@@ -1,0 +1,16 @@
+{
+  "description": "A tenant-isolating proxy is added in front of the package store, but the store's remote repositories are still on.",
+  "nodes": {
+    "agent-a": {"type": "agent"},
+    "agent-b": {"type": "agent"},
+    "tenant-proxy": {"type": "service", "relay": true, "isolates_tenants": true},
+    "artifactory": {"type": "service", "stateful": true, "relay": true},
+    "internet": {"type": "external"}
+  },
+  "network": [
+    ["agent-a", "tenant-proxy"],
+    ["agent-b", "tenant-proxy"],
+    ["tenant-proxy", "artifactory"],
+    ["artifactory", "internet"]
+  ]
+}

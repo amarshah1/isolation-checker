@@ -1,0 +1,18 @@
+{
+  "description": "Tenant-isolating proxy in front of the store; remote repositories off; a mirror-sync job that agents cannot reach fills the store from the internet.",
+  "nodes": {
+    "agent-a": {"type": "agent"},
+    "agent-b": {"type": "agent"},
+    "tenant-proxy": {"type": "service", "relay": true, "isolates_tenants": true},
+    "artifactory": {"type": "service", "stateful": true},
+    "mirror-sync": {"type": "service"},
+    "internet": {"type": "external"}
+  },
+  "network": [
+    ["agent-a", "tenant-proxy"],
+    ["agent-b", "tenant-proxy"],
+    ["tenant-proxy", "artifactory"],
+    ["mirror-sync", "internet"],
+    ["mirror-sync", "artifactory"]
+  ]
+}
