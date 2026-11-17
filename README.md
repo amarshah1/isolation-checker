@@ -17,6 +17,11 @@ It has two checks and two tools for testing the model against a real server:
 
 The checker itself needs only Python 3.10+, with no dependencies.
 
+Everything here so far checks a model. [ROADMAP.md](ROADMAP.md) describes the
+plan to verify the real system: which parts get verified directly (the proxy
+code, the network config files), which parts are modeled (Artifactory), and how
+each model is tied back to the real system.
+
 ## Quick start
 
 ```bash
